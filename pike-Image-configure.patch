@@ -5,8 +5,8 @@ diff -uNr Pike-v7.2.239.orig/src/modules/Image/configure Pike-v7.2.239/src/modul
    if test "`uname -m`" = "ia64"; then
      echo "$ac_t""yes, but we are on an IA64 machine" 1>&6
    else
-+   if test "`uname -m`" = "ppc"; then
-+   echo "$ac_t""yes, but we are on an ppc machine" 1>&6
++   if $(uname -m | grep -v -q '^i.86$'); then
++   echo "$ac_t""yes, but we are not on x86 machine" 1>&6
 +   else
      ASSEMBLY_OBJECTS=assembly.o
      cat >> confdefs.h <<\EOF
