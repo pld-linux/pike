@@ -259,7 +259,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc BUGS Change* README tutorial
+%doc ANNOUNCE README src/{BUGS,Change*} tutorial
 %attr(755,root,root) %{_bindir}/*
 %{_includedir}/pike
 
