@@ -1,7 +1,7 @@
-diff -urN Pike-v7.2.30.org/src/Makefile.in Pike-v7.2.30/src/Makefile.in
---- Pike-v7.2.30.org/src/Makefile.in	Sun Apr  8 00:56:40 2001
-+++ Pike-v7.2.30/src/Makefile.in	Sun Apr  8 01:19:34 2001
-@@ -32,17 +32,17 @@
+diff -urN Pike-v7.6.24.org/src/Makefile.in Pike-v7.6.24/src/Makefile.in
+--- Pike-v7.6.24.org/src/Makefile.in	2004-04-23 19:18:34.000000000 +0200
++++ Pike-v7.6.24/src/Makefile.in	2005-02-19 17:56:20.775640896 +0100
+@@ -42,17 +42,17 @@
  buildroot=
  
  prefix = @prefix@
@@ -15,7 +15,7 @@ diff -urN Pike-v7.2.30.org/src/Makefile.in Pike-v7.2.30/src/Makefile.in
 +man_prefix = @mandir@
  
  # Arguments for test_pike.pike used by the verify targets.
- # TESTARGS = -a
+ # TESTARGS = -F -a
  
  # Arguments for install.pike used by the install targets.
 -INSTALLARGS = --new-style
