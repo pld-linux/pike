@@ -2,12 +2,12 @@
 Summary:	interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
-Version:	7.2.30
+Version:	7.2.239
 Release:	3
 License:	GPL
 Group:		Development/Tools
 URL:		http://pike.idonex.se/
-Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/Pike-v%{version}.tar.gz
+Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/%{name}-%{version}.tar.gz
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
 Patch0:		%{name}-dirs.patch
 BuildRequires:	gdbm-devel
