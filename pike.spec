@@ -1,15 +1,19 @@
+#
+# TODO: link with libnsl only when necessary (Yp.so?),
+#       don't link with libbind (if not necessary, which is probably true)
 %include	/usr/lib/rpm/macros.perl
 Summary:	interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
 Version:	7.2.239
-Release:	3
+Release:	4
 License:	GPL
 Group:		Development/Tools
-URL:		http://pike.idonex.se/
 Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/%{name}-%{version}.tar.gz
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
 Patch0:		%{name}-dirs.patch
+URL:		http://pike.idonex.se/
+BuildRequires:	OpenGL-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	bison
 BuildRequires:	file
@@ -24,10 +28,10 @@ BuildRequires:	libglade-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	mysql-devel >= 3.20
-BuildRequires:	OpenGL-devel
 BuildRequires:	pdflib-devel
 BuildRequires:	perl >= 5.6
 BuildRequires:	postgresql-devel >= 7.0
+BuildRequires:	sane-backends-devel
 BuildRequires:	unixODBC-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -199,6 +203,18 @@ This Pike module provides PDF processing functions.
 %description pdf -l pl
 Modu³ Pike udostêpniaj±cy funkcje obróbki dokumentów PDF.
 
+%package sane
+Summary:	SANE pike module
+Summary(pl):	Modu³ pike - SANE
+Group:		Development/Libraries
+Requires:	%{name} = %{version}
+
+%description sane
+This Pike module provides SANE functions.
+
+%description sane -l pl
+Ten modu³ Pike udostêpnia funkcje SANE.
+
 %prep
 %setup -q -n Pike-v%{version} -a1
 %patch0 -p1
@@ -208,7 +224,7 @@ Modu³ Pike udostêpniaj±cy funkcje obróbki dokumentów PDF.
 # fix ssl support (link with openssl; add ssl subpackage)
 # fix perl support
 cd src
-LDFLAGS="-L%{_prefix}/X11R6/lib %{rpmldflags}"; export LDFLAGS
+LDFLAGS="-L/usr/X11R6/lib %{rpmldflags}"; export LDFLAGS
 %configure2_13 \
 	--with-double-precision \
 	--with-long-double-precision \
@@ -230,10 +246,10 @@ LDFLAGS="-L%{_prefix}/X11R6/lib %{rpmldflags}"; export LDFLAGS
 	--with-x \
 	--with-lib-GL \
 	--with-GLUT \
+	--with-sane \
 	--without-perl \
 	--without-gnome \
-	--without-sybase \
-	--without-sane
+	--without-sybase
 
 %{__make}
 
@@ -265,23 +281,27 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_libdir}/pike
 %{_libdir}/pike/*.*
-%{_libdir}/pike/include
+%dir %{_libdir}/pike/include
+%{_libdir}/pike/include/[^mp]*.h
+%{_libdir}/pike/include/m[^y]*.h
+%{_libdir}/pike/include/p[^o]*.h
 %{_libdir}/pike/tools
 %dir %{_libdir}/pike/modules
-%{_libdir}/pike/modules/*.pmod
-%{_libdir}/pike/modules/C*.so
-%{_libdir}/pike/modules/*_C*.so
-%{_libdir}/pike/modules/Gettext*.so
-%{_libdir}/pike/modules/H*.so
-%{_libdir}/pike/modules/___J*.so
-%{_libdir}/pike/modules/___M*.so
-%{_libdir}/pike/modules/Msql*.so
-%{_libdir}/pike/modules/___O*.so
-%{_libdir}/pike/modules/P[ir]*.so
-%{_libdir}/pike/modules/___R*.so
-%{_libdir}/pike/modules/S*.so
-%{_libdir}/pike/modules/s*.so
-%{_libdir}/pike/modules/___Y*.so
+%{_libdir}/pike/modules/[^_]*.pmod
+%{_libdir}/pike/modules/_[^I]*.pmod
+%attr(755,root,root) %{_libdir}/pike/modules/C*.so
+%attr(755,root,root) %{_libdir}/pike/modules/*_C*.so
+%attr(755,root,root) %{_libdir}/pike/modules/Gettext*.so
+%attr(755,root,root) %{_libdir}/pike/modules/H*.so
+%attr(755,root,root) %{_libdir}/pike/modules/___J*.so
+%attr(755,root,root) %{_libdir}/pike/modules/___M*.so
+%attr(755,root,root) %{_libdir}/pike/modules/Msql*.so
+%attr(755,root,root) %{_libdir}/pike/modules/___O*.so
+%attr(755,root,root) %{_libdir}/pike/modules/P[ir]*.so
+%attr(755,root,root) %{_libdir}/pike/modules/___R*.so
+%attr(755,root,root) %{_libdir}/pike/modules/S[^A]*.so
+%attr(755,root,root) %{_libdir}/pike/modules/s*.so
+%attr(755,root,root) %{_libdir}/pike/modules/___Y*.so
 
 %files pg
 %defattr(644,root,root,755)
@@ -332,3 +352,7 @@ rm -rf $RPM_BUILD_ROOT
 %files pdf
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/pike/modules/PDF.so
+
+%files sane
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/SANE.so
