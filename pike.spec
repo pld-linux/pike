@@ -10,7 +10,7 @@ Version:	7.4.44
 Release:	3
 License:	GPL
 Group:		Development/Languages
-Source0:	ftp://pike.ida.liu.se/pub/pike/latest-stable/Pike-v%{version}.tar.gz
+Source0:	http://pike.ida.liu.se/download/pub/pike/latest-stable/Pike-v%{version}.tar.gz
 # Source0-md5:	e9fe50e56f3fada5de9b4a1dd3113fc6
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
 # Source1-md5:	0991ac8e4079cfa374e68c978bae9d59
