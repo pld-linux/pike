@@ -1,0 +1,111 @@
+--- Pike-v7.4.44/src/modules/Ssleay/configure.in.orig	2001-02-27 19:52:25.000000000 +0100
++++ Pike-v7.4.44/src/modules/Ssleay/configure.in	2004-04-04 20:12:05.750306728 +0200
+@@ -2,6 +2,8 @@
+ AC_INIT(ssleay.c)
+ 
+ AC_CONFIG_HEADER(config.h)
++CONFIG_HEADERS="config.h"
++AC_SUBST(CONFIG_HEADERS)
+ 
+ AC_MODULE_INIT()
+ 
+@@ -16,32 +18,9 @@
+   OLD_CPPFLAGS=$CPPFLAGS
+   OLD_LIBS=$LIBS
+ 
+-  AC_MSG_CHECKING(Checking for existance of SSLeay)
+-  
+-  AC_CACHE_VAL(pike_cv_ssleay_exists,
+-  [
+-    if test -d $with_root/usr/local/ssl ; then
+-      pike_cv_ssleay_exists="yes"
+-    else
+-      pike_cv_ssleay_exists="no"
+-    fi
+-  ])
+-  
+-  AC_MSG_RESULT($pike_cv_ssleay_exists)
+-  
+-  if test x$pike_cv_ssleay_exists = xyes; then
+-  
+-    if test -d $with_root/usr/local/ssl/lib ; then
+-      echo Added $with_root/usr/local/ssl/lib to the library search path.
+-      LDFLAGS="-L$with_root/usr/local/ssl/lib ${LDFLAGS}"
+-      # link with libc first, so we get the right definition
+-      # of crypt()
+-      LDFLAGS="-lc ${LDFLAGS}"
+-    fi
+-
+-    if test -d $with_root/usr/local/ssl/include ; then
+-      echo Added $with_root/usr/local/ssl/include to the include search path.
+-      CPPFLAGS="-I$with_root/usr/local/ssl/include ${CPPFLAGS}"
++    if test -d /usr/include/openssl ; then
++      echo Added /usr/include/openssl to the include search path.
++      CPPFLAGS="-I/usr/include/openssl ${CPPFLAGS}"
+     fi
+ 
+     pike_cv_ssleay="yes"
+@@ -63,7 +42,6 @@
+       CPPFLAGS=$OLD_CPPFLAGS
+       LDFLAGS=$OLD_LDFLAGS
+     fi
+-  fi
+ fi
+ 
+ AC_OUTPUT(Makefile,echo FOO >stamp-h )
+--- Pike-v7.4.44/src/modules/Ssleay/ssleay.c.orig	2002-10-21 19:06:23.000000000 +0200
++++ Pike-v7.4.44/src/modules/Ssleay/ssleay.c	2004-04-04 20:44:47.646053240 +0200
+@@ -19,7 +19,7 @@
+ /*  #include "pike_macros.h" */
+ /*  #include "backend.h" */
+ /*  #include "program.h" */
+-/*  #include "threads.h" */
++#include "threads.h"
+ 
+ #ifdef HAVE_SYS_TYPE_H
+ #include <sys/types.h>
+@@ -96,7 +96,7 @@
+ void ssleay_connection_accept(INT32 args)
+ {
+   int res;
+-  struct ssleay_connection *con=CON;
++  SSL *con=CON;
+   
+   pop_n_elems(args);
+   THREADS_ALLOW();
+@@ -122,7 +122,7 @@
+   s = begin_shared_string(len);
+   if (len)
+     {
+-      struct ssleay_connection *con=CON;
++      SSL *con=CON;
+       THREADS_ALLOW();
+       count = SSL_read(con, s->str, len);
+       THREADS_DISALLOW();
+@@ -142,7 +142,7 @@
+ void ssleay_connection_write(INT32 args)
+ {
+   INT32 res;
+-  struct ssleay_connection *con=CON;
++  SSL *con=CON;
+   struct pike_string *s;
+ 
+   if ((args < 1) || (sp[-args].type != T_STRING) ||
+@@ -169,7 +169,7 @@
+ {
+   if (CTX)
+     SSL_CTX_free(CTX);
+-  CTX = SSL_CTX_new();
++  CTX = SSL_CTX_new(SSLv23_method());
+   if (!CTX)
+     Pike_error("ssleay->create: couldn't allocate new ssl context\n");
+   pop_n_elems(args);
+@@ -227,7 +227,7 @@
+ 
+ static MUTEX_T ssleay_locks[CRYPTO_NUM_LOCKS];
+ 
+-static void ssleay_locking_callback(int mode, int type, char *file, int line)
++static void ssleay_locking_callback(int mode, int type, const char *file, int line)
+ {
+   if (mode & CRYPTO_LOCK)
+     mt_lock(ssleay_locks + type);
