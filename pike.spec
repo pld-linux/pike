@@ -1,0 +1,360 @@
+Summary:	interpreted, high-level, object oriented language
+Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
+Name:		pike
+Version:	7.2.30
+Release:	1
+License:	GPL
+Group:		Development/Tools
+Group(de):	Entwicklung/Werkzeuge
+Group(fr):	Development/Outils
+Group(pl):	Programowanie/Narzêdzia
+URL:		http://pike.idonex.se/
+Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/Pike-v%{version}.tar.gz
+Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
+Patch0:		%{name}-dirs.patch
+BuildRequires:	gdbm-devel
+BuildRequires:	gmp-devel
+BuildRequires:	zlib-devel
+BuildRequires:	pdflib-devel
+BuildRequires:	postgresql-devel >= 7.0
+BuildRequires:	mysql-devel >= 3.20
+BuildRequires:	unixODBC-devel
+BuildRequires:	freetype >= 2.0
+BuildRequires:	libjpeg-devel
+BuildRequires:	libtiff-devel
+BuildRequires:	XFree86-devel
+BuildRequires:	OpenGL-devel
+BuildRequires:	gtk+-devel
+BuildRequires:	glib-devel
+BuildRequires:	libglade-devel
+BuildRequires:	glut-devel
+BuildRequires:	perl >= 5.6
+BuildRequires:	bison
+BuildRequires:	findutils
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%description
+Pike is easily learned, and just as easily used programming language
+to develop powerful applications. Pike is designed to be useful and
+powerful. As the syntax of Pike is similar to that of C, most
+programmers will find it easy to use. As Pike is a high-level,
+interpreted and modular object-oriented language, powerful
+applications can be rapidly developed. Pike has evolved rather than
+been designed. The changes to Pike that have been made have been
+guided by its users' needs. In general, the better you get to know
+Pike, the more you will appreciate it, from a users perspective.
+
+%description -l pl
+Pike jest interpretowalnym, modularnym, obiektowo zorientowanym
+jêzykiem wysokiego poziomu. Pike ze sk³adni± podobn± do C jest prosty
+w nauce. Pike raczej ewoluowa³ ni¿ by³ zaprojektowany. Zmiany w Pike
+zosta³y zapocz±tkowane z powodu konkretnych potrzeb u¿ytkowników.
+
+%package pg
+Summary:	Postgres pike module
+Summary(pl):	Modu³ Postgres dla pike
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description pg
+This Pike module provides access to Postgres databases.
+
+%description -l pl pg
+Modu³ dla Pike umo¿liwiaj±cy dostêp do baz Postgresa.
+
+%package mysql
+Summary:	MySQL pike module
+Summary(pl):	Modu³ MySQL dla pike
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description mysql
+This Pike module provides access to MySQL databases.
+
+%description -l pl mysql
+Modu³ dla Pike umo¿liwiaj±cy dostêp do baz MySQL.
+
+%package images
+Summary:	Image pike module
+Summary(pl):	Modu³ obs³ugi grafiki dla pike
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description images
+This module provides many powerful image processing functions to Pike
+programs. Handles GIF, JPEG and PNM.
+
+%description -l pl images
+Modu³ dla Pike dostarczaj±cy funkcje obróbki grafiki. Obs³uguje GIF,
+JPEG i PNM.
+
+%package gdbm
+Summary:	gdb pike module
+Summary(pl):	Modu³ obs³ugi baz gdbm dla pike
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description gdbm
+This Pike module provides access to gdbm databases.
+
+%description -l gdbm
+Modu³ dla Pike umo¿liwiaj±cy dostêp do baz gdbm.
+
+%package zlib
+Summary:	zlib pike module
+Summary(pl):	Modu³ obs³ugi skompresowanych archiwów
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description zlib
+This Pike module provides access to zlib compression functions.
+
+%description -l pl zlib
+Modu³ dla Pike umo¿liwiaj±cy dostêp do funkcji kompresji biblioteki
+zlib.
+
+%package gmp
+Summary:	gmp pike module
+Summary(pl):	Modu³ pike - gmp
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description gmp
+This Pike module provides access to gmp functions.
+
+%description -l pl gmp
+Modu³ Pike umo¿liwiaj±cy dostêp do funkcji biblioteki gmp.
+
+%package perl
+Summary:	perl pike module
+Summary(pl):	Modu³ pike - perl
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description perl
+This Pike module makes it possible to use Perl code in Pike programs.
+
+%description -l pl perl
+Modu³ Pike umo¿liwiaj±cy u¿ywanie kodu Perla w programach Pike.
+
+%package GL
+Summary:	GL pike module
+Summary(pl):	Modu³ pike - GL
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description GL
+This Pike module provides access to OpenGL functions.
+
+%description -l pl GL
+Modu³ Pike umo¿liwiaj±cy dostêp do funkcji OpenGL.
+
+%package gtk
+Summary:	gtk pike module
+Summary(pl):	Modu³ pike - gtk
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description gtk
+This Pike module provides access to GTK+ functions.
+
+%description -l pl gtk
+Modu³ Pike umo¿liwiaj±cy dostêp do funkcji GTK+.
+
+%package GLUT
+Summary:	GLUT pike module
+Summary(pl):	Modu³ pike - GLUT
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description GLUT
+This Pike module provides access to GLUT OpenGL functions.
+
+%description -l pl GLUT
+Modu³ Pike umo¿liwiaj±cy dostêp do funkcji OpenGL biblioteki GLUT.
+
+%package odbc
+Summary:	ODBC pike module
+Summary(pl):	Modu³ pike - ODBC
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description odbc
+This Pike module provides access to databases through ODBC driver.
+
+%description -l pl odbc
+Modu³ Pike umo¿liwiaj±cy dostêp do baz danych poprzez sterownik ODBC.
+
+%package pdf
+Summary:	PDF pike module
+Summary(pl):	Modu³ pike - PDF
+Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description pdf
+This Pike module provides PDF processing functions.
+
+%description -l pdf
+Modu³ Pike udostêpniaj±cy funkcje obróbki dokumentów PDF.
+
+%prep
+%setup -q -n Pike-v%{version} -a1
+%patch0 -p1
+
+%build
+cd src
+%configure \
+	--with-double-precision \
+	--with-long-double-precision \
+	--with-poll \
+	--with-max-fd=1024 \
+	--with-security \
+	--with-gmp \
+	--with-zlib \
+	--with-pdflib \
+	--with-postgres \
+	--with-postgres-include-dir=%{_includedir}/pgsql \
+	--with-mysql \
+	--with-ssleay \
+	--with-freetype \
+	--with-gif \
+	--with-jpeglib \
+	--with-tifflib \
+	--with-ttflib \
+	--with-x \
+	--with-lib-GL \
+	--with-GLUT \
+	--without-perl \
+	--without-gnome \
+	--without-sybase \
+	--without-sane
+# --without-perl -- temporary
+
+%{__make}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_libdir}
+cd src
+
+%{__make} install \
+	buildroot=$RPM_BUILD_ROOT
+
+gzip -9nf src/{BUGS,Change*,README}
+
+rm -f `find $RPM_BUILD_ROOT -regex '.*\.o' -type f | xargs`
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%doc src/*.gz tutorial
+%attr(755,root,root) %{_bindir}/*
+%{_includedir}/pike
+
+%dir %{_libdir}/pike
+%{_libdir}/pike/*.*
+%{_libdir}/pike/include
+%{_libdir}/pike/tools
+%dir %{_libdir}/pike/modules
+%{_libdir}/pike/modules/*.pmod
+%{_libdir}/pike/modules/C*.so
+%{_libdir}/pike/modules/*_C*.so
+%{_libdir}/pike/modules/Gettext*.so
+%{_libdir}/pike/modules/H*.so
+%{_libdir}/pike/modules/___J*.so
+%{_libdir}/pike/modules/___M*.so
+%{_libdir}/pike/modules/Msql*.so
+%{_libdir}/pike/modules/___O*.so
+%{_libdir}/pike/modules/P[ir]*.so
+%{_libdir}/pike/modules/___R*.so
+%{_libdir}/pike/modules/S*.so
+%{_libdir}/pike/modules/s*.so
+%{_libdir}/pike/modules/___Y*.so
+
+%files pg
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/Postgres.so
+%{_libdir}/pike/include/postgres.h
+
+%files mysql
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/Mysql.so
+%{_libdir}/pike/include/mysql.h
+
+%files images
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/*Image*
+
+%files gdbm
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/Gdbm.so
+
+%files zlib
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/Gz.so
+
+%files gmp
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/Gmp.so
+
+%files perl
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/Perl.so
+
+%files GL
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/GL.so
+
+%files gtk
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/*GTK.so
+
+%files GLUT
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/GLUT.so
+
+%files odbc
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/Odbc.so
+
+%files pdf
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/PDF.so
