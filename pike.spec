@@ -3,7 +3,7 @@ Summary:	interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
 Version:	7.2.30
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Tools
 URL:		http://pike.idonex.se/
@@ -209,7 +209,7 @@ Modu³ Pike udostêpniaj±cy funkcje obróbki dokumentów PDF.
 # fix perl support
 cd src
 LDFLAGS="-L%{_prefix}/X11R6/lib %{rpmldflags}"; export LDFLAGS
-%configure \
+%configure2_13 \
 	--with-double-precision \
 	--with-long-double-precision \
 	--with-poll \
