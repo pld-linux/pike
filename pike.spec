@@ -33,6 +33,8 @@ BuildRequires:	bison
 BuildRequires:	findutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
+%define		_noautoreqdep	libGL.so.1 libGLU.so.1
+
 %description
 Pike is easily learned, and just as easily used programming language
 to develop powerful applications. Pike is designed to be useful and
@@ -166,6 +168,7 @@ Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
+Requires:	OpenGL
 
 %description GL
 This Pike module provides access to OpenGL functions.
@@ -238,7 +241,11 @@ Modu³ Pike udostêpniaj±cy funkcje obróbki dokumentów PDF.
 %patch0 -p1
 
 %build
+# TODO
+# fix ssl support (link with openssl; add ssl subpackage)
+# fix perl support
 cd src
+LDFLAGS="-L%{_prefix}/X11R6/lib %{rpmldflags}"; export LDFLAGS
 %configure \
 	--with-double-precision \
 	--with-long-double-precision \
@@ -264,7 +271,6 @@ cd src
 	--without-gnome \
 	--without-sybase \
 	--without-sane
-# --without-perl -- temporary
 
 %{__make}
 
@@ -276,7 +282,7 @@ cd src
 %{__make} install \
 	buildroot=$RPM_BUILD_ROOT
 
-gzip -9nf src/{BUGS,Change*,README}
+gzip -9nf BUGS Change* README
 
 rm -f `find $RPM_BUILD_ROOT -regex '.*\.o' -type f | xargs`
 
