@@ -1,3 +1,4 @@
+%include	/usr/lib/rpm/macros.perl
 Summary:	interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
