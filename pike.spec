@@ -1,4 +1,7 @@
-%bcond_without	GL
+#
+# Conditional build:
+%bcond_without	GL	# don't build GL and GLUT modules
+#
 %include	/usr/lib/rpm/macros.perl
 Summary:	Interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
@@ -19,7 +22,7 @@ Patch4:		%{name}-freetype-includes.patch
 Patch5:		%{name}-ssl.patch
 Patch6:		%{name}-ffmpeg.patch
 URL:		http://pike.ida.liu.se/
-#BuildRequires:	OpenGL-devel
+%{?with_GL:BuildRequires:	OpenGL-devel}
 BuildRequires:	SDL-devel
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	XFree86-devel
@@ -30,7 +33,7 @@ BuildRequires:	freetds-devel
 BuildRequires:	freetype-devel >= 2.1.0
 BuildRequires:	gdbm-devel
 BuildRequires:	glib-devel
-BuildRequires:	glut-devel
+%{?with_GL:BuildRequires:	glut-devel}
 BuildRequires:	gmp-devel
 BuildRequires:	gtkglarea1-devel
 BuildRequires:	gtk+-devel
@@ -68,7 +71,6 @@ jêzykiem wysokiego poziomu. Pike ze sk³adni± podobn± do C jest prosty
 w nauce. Pike raczej ewoluowa³ ni¿ by³ zaprojektowany. Zmiany w Pike
 zosta³y zapocz±tkowane z powodu konkretnych potrzeb u¿ytkowników.
 
-%if %{with GL}
 %package GL
 Summary:	GL module for Pike
 Summary(pl):	Modu³ GL dla jêzyka Pike
@@ -94,7 +96,6 @@ This Pike module provides access to GLUT OpenGL functions.
 %description GLUT -l pl
 Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do funkcji OpenGL
 biblioteki GLUT.
-%endif
 
 %package SDL
 Summary:	SDL module for Pike
@@ -319,8 +320,8 @@ CPPFLAGS="-I/usr/include/postgresql/internal -I/usr/include/postgresql/server"
 	--with-tifflib \
 	--with-ttflib \
 	--with-x \
-	%{?with GL:--with-lib-GL} \
-	%{?with GL:--with-GLUT }\
+	%{?with_GL:--with-lib-GL} \
+	%{?with_GL:--with-GLUT} \
 	--with-sane \
 	--without-perl \
 	--without-gnome \
