@@ -7,7 +7,7 @@ Summary:	Interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
 Version:	7.4.44
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://pike.ida.liu.se/pub/pike/latest-stable/Pike-v%{version}.tar.gz
@@ -21,6 +21,7 @@ Patch3:		%{name}-acfix.patch
 Patch4:		%{name}-freetype-includes.patch
 Patch5:		%{name}-ssl.patch
 Patch6:		%{name}-ffmpeg.patch
+Patch7:		%{name}-sparc.patch
 URL:		http://pike.ida.liu.se/
 %{?with_GL:BuildRequires:	OpenGL-devel}
 BuildRequires:	SDL-devel
@@ -283,6 +284,7 @@ biblioteki zlib.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 # TODO
