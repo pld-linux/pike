@@ -6,7 +6,7 @@ Summary:	interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
 Version:	7.2.239
-Release:	4
+Release:	5
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/%{name}-%{version}.tar.gz
@@ -29,9 +29,11 @@ BuildRequires:	libglade-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	mysql-devel >= 3.20
+BuildRequires:	openssl-devel
 BuildRequires:	pdflib-devel
 BuildRequires:	perl >= 5.6
-BuildRequires:	postgresql-devel >= 7.0
+BuildRequires:	postgresql-devel >= 7.2
+BuildRequires:	postgresql-backend-devel >= 7.2
 BuildRequires:	sane-backends-devel
 BuildRequires:	unixODBC-devel
 BuildRequires:	zlib-devel
@@ -227,6 +229,7 @@ Ten modu³ Pike udostêpnia funkcje SANE.
 # fix perl support
 cd src
 LDFLAGS="-L/usr/X11R6/lib %{rpmldflags}"; export LDFLAGS
+CPPFLAGS="-I/usr/include/postgresql/internal -I/usr/include/postgresql/server"
 %configure2_13 \
 	--with-double-precision \
 	--with-long-double-precision \
@@ -237,7 +240,7 @@ LDFLAGS="-L/usr/X11R6/lib %{rpmldflags}"; export LDFLAGS
 	--with-zlib \
 	--with-pdflib \
 	--with-postgres \
-	--with-postgres-include-dir=%{_includedir}/pgsql \
+	--with-postgres-include-dir=%{_includedir}/postgresql \
 	--with-mysql \
 	--with-ssleay \
 	--with-freetype \
