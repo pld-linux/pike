@@ -1,0 +1,25 @@
+diff -urN Pike-v7.2.30.org/src/Makefile.in Pike-v7.2.30/src/Makefile.in
+--- Pike-v7.2.30.org/src/Makefile.in	Sun Apr  8 00:56:40 2001
++++ Pike-v7.2.30/src/Makefile.in	Sun Apr  8 01:19:34 2001
+@@ -32,17 +32,17 @@
+ buildroot=
+ 
+ prefix = @prefix@
+-exec_prefix = $(prefix)/bin
+-lib_prefix = $(prefix)/lib/pike
++exec_prefix = @bindir@
++lib_prefix = @libdir@/pike
+ data_prefix = @datadir@
+ share_prefix = $(data_prefix)/pike
+-man_prefix = $(prefix)/man
++man_prefix = @mandir@
+ 
+ # Arguments for test_pike.pike used by the verify targets.
+ # TESTARGS = -a
+ 
+ # Arguments for install.pike used by the install targets.
+-INSTALLARGS = --new-style
++INSTALLARGS = --traditional
+ 
+ #
+ # use bison please, yacc isn't good enough.
