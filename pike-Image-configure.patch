@@ -1,0 +1,21 @@
+diff -uNr Pike-v7.2.239.orig/src/modules/Image/configure Pike-v7.2.239/src/modules/Image/configure
+--- Pike-v7.2.239.orig/src/modules/Image/configure	Mon Nov 26 14:31:45 2001
++++ Pike-v7.2.239/src/modules/Image/configure	Tue Oct 15 11:59:30 2002
+@@ -1387,6 +1387,9 @@
+   if test "`uname -m`" = "ia64"; then
+     echo "$ac_t""yes, but we are on an IA64 machine" 1>&6
+   else
++   if test "`uname -m`" = "ppc"; then
++   echo "$ac_t""yes, but we are on an ppc machine" 1>&6
++   else
+     ASSEMBLY_OBJECTS=assembly.o
+     cat >> confdefs.h <<\EOF
+ #define ASSEMBLY_OK 1
+@@ -1394,6 +1397,7 @@
+ 
+     echo "$ac_t""yes" 1>&6
+   fi
++ fi
+ else
+   echo "$ac_t""no" 1>&6
+ fi
