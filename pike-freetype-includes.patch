@@ -1,0 +1,42 @@
+--- Pike-v7.4.44/src/modules/_Image_FreeType/configure.in.orig	2003-01-15 20:31:40.000000000 +0100
++++ Pike-v7.4.44/src/modules/_Image_FreeType/configure.in	2004-04-04 19:45:33.658341496 +0200
+@@ -1,5 +1,7 @@
+ AC_INIT(freetype.c)
+ AC_CONFIG_HEADER(config.h)
++CONFIG_HEADERS="config.h"
++AC_SUBST(CONFIG_HEADERS)
+ AC_ARG_WITH(freetype,     [  --with(out)-freetype       Support Freetype via Freetype 2 (Image.FreeType)],[],[with_freetype=yes])
+ 
+ AC_MODULE_INIT()
+@@ -21,7 +23,8 @@
+     LIBS="`$FT_CONFIG --libs` $LIBS"
+     AC_MSG_CHECKING(if freetype actually works)
+     AC_TRY_LINK([
+-#include <freetype/freetype.h> 
++#include <ft2build.h>
++#include FT_FREETYPE_H
+ ], 
+ [
+   FT_Library library;
+@@ -36,7 +39,8 @@
+       AC_MSG_CHECKING(for ft_encoding_latin_1 declaration)
+       AC_CACHE_VAL(pike_cv_decl_ft_encoding_latin_1, [
+         AC_TRY_COMPILE([
+-#include <freetype/freetype.h>
++#include <ft2build.h>
++#include FT_FREETYPE_H
+ int q = ft_encoding_latin_1;
+         ], [], [pike_cv_decl_ft_encoding_latin_1=yes
+         ],[pike_cv_decl_ft_encoding_latin_1=no ])
+--- Pike-v7.4.44/src/modules/_Image_FreeType/freetype.c.orig	2003-01-15 17:57:16.000000000 +0100
++++ Pike-v7.4.44/src/modules/_Image_FreeType/freetype.c	2004-04-04 19:48:40.461943032 +0200
+@@ -12,7 +12,8 @@
+ #include "pike_error.h"
+ 
+ #ifdef HAVE_LIBFT2
+-#include <freetype/freetype.h>
++#include <ft2build.h>
++#include FT_FREETYPE_H
+ #include "pike_macros.h"
+ #include "object.h"
+ #include "constants.h"
