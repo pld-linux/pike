@@ -1,16 +1,18 @@
 #
 # TODO: link with libnsl only when necessary (Yp.so?),
-#       don't link with libbind (if not necessary, which is probably true)
+#	don't link with libbind (if not necessary, which is probably true)
 %include	/usr/lib/rpm/macros.perl
 Summary:	interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
 Version:	7.2.239
-Release:	4
+Release:	5
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/%{name}-%{version}.tar.gz
+# Source0-md5:	d780b2d07d9e15c1c6293851c790c74f
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
+# Source1-md5:	0991ac8e4079cfa374e68c978bae9d59
 Patch0:		%{name}-dirs.patch
 Patch1:		%{name}-Image-configure.patch
 URL:		http://pike.idonex.se/
