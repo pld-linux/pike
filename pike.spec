@@ -137,8 +137,8 @@ This Pike module provides access to GDBM databases.
 Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do baz GDBM.
 
 %package gtk
-Summary:	Gtk pike module
-Summary(pl):	Modu³ Gtk dla jêzyka Pike
+Summary:	GTK+ pike module
+Summary(pl):	Modu³ GTK+ dla jêzyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
