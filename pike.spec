@@ -6,9 +6,6 @@ Version:	7.2.30
 Release:	2
 License:	GPL
 Group:		Development/Tools
-Group(de):	Entwicklung/Werkzeuge
-Group(fr):	Development/Outils
-Group(pl):	Programowanie/NarzЙdzia
 URL:		http://pike.idonex.se/
 Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/Pike-v%{version}.tar.gz
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
@@ -58,13 +55,6 @@ zostaЁy zapocz╠tkowane z powodu konkretnych potrzeb u©ytkownikСw.
 Summary:	Postgres pike module
 Summary(pl):	ModuЁ Postgres dla pike
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description pg
@@ -77,13 +67,6 @@ ModuЁ dla Pike umo©liwiaj╠cy dostЙp do baz Postgresa.
 Summary:	MySQL pike module
 Summary(pl):	ModuЁ MySQL dla pike
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description mysql
@@ -96,13 +79,6 @@ ModuЁ dla Pike umo©liwiaj╠cy dostЙp do baz MySQL.
 Summary:	Image pike module
 Summary(pl):	ModuЁ obsЁugi grafiki dla pike
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description images
@@ -117,13 +93,6 @@ JPEG i PNM.
 Summary:	gdb pike module
 Summary(pl):	ModuЁ obsЁugi baz gdbm dla pike
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description gdbm
@@ -136,13 +105,6 @@ ModuЁ dla Pike umo©liwiaj╠cy dostЙp do baz gdbm.
 Summary:	zlib pike module
 Summary(pl):	ModuЁ obsЁugi skompresowanych archiwСw
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description zlib
@@ -156,13 +118,6 @@ zlib.
 Summary:	gmp pike module
 Summary(pl):	ModuЁ pike - gmp
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description gmp
@@ -175,13 +130,6 @@ ModuЁ Pike umo©liwiaj╠cy dostЙp do funkcji biblioteki gmp.
 Summary:	perl pike module
 Summary(pl):	ModuЁ pike - perl
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description perl
@@ -194,13 +142,6 @@ ModuЁ Pike umo©liwiaj╠cy u©ywanie kodu Perla w programach Pike.
 Summary:	GL pike module
 Summary(pl):	ModuЁ pike - GL
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	OpenGL
 
@@ -214,13 +155,6 @@ ModuЁ Pike umo©liwiaj╠cy dostЙp do funkcji OpenGL.
 Summary:	gtk pike module
 Summary(pl):	ModuЁ pike - gtk
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description gtk
@@ -233,13 +167,6 @@ ModuЁ Pike umo©liwiaj╠cy dostЙp do funkcji GTK+.
 Summary:	GLUT pike module
 Summary(pl):	ModuЁ pike - GLUT
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description GLUT
@@ -252,13 +179,6 @@ ModuЁ Pike umo©liwiaj╠cy dostЙp do funkcji OpenGL biblioteki GLUT.
 Summary:	ODBC pike module
 Summary(pl):	ModuЁ pike - ODBC
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description odbc
@@ -271,13 +191,6 @@ ModuЁ Pike umo©liwiaj╠cy dostЙp do baz danych poprzez sterownik ODBC.
 Summary:	PDF pike module
 Summary(pl):	ModuЁ pike - PDF
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 
 %description pdf
