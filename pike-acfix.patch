@@ -1,14 +1,20 @@
---- Pike-v7.4.20/src/aclocal.m4.orig	Thu Apr  3 18:58:36 2003
-+++ Pike-v7.4.20/src/aclocal.m4	Fri Apr 25 13:52:39 2003
-@@ -4,6 +4,7 @@
- dnl newer autoconf call substr m4_substr
- ifdef([substr], ,m4_copy(m4_substr,substr))
+--- Pike-v7.4.44/src/aclocal.m4.orig	2003-12-06 20:21:33.000000000 +0100
++++ Pike-v7.4.44/src/aclocal.m4	2004-04-04 18:18:14.097875760 +0200
+@@ -96,13 +96,6 @@
+   fi
+ ])
  
-+define([AC_ACVERSION], m4_PACKAGE_VERSION)
- 
- pushdef([AC_PROG_CC_WORKS],
+-pushdef([AC_CONFIG_HEADER],
+-[
+-  CONFIG_HEADERS="$1"
+-  popdef([AC_CONFIG_HEADER])
+-  AC_CONFIG_HEADER($1)
+-])
+-
+ define([ORIG_AC_CHECK_SIZEOF], defn([AC_CHECK_SIZEOF]))
+ pushdef([AC_CHECK_SIZEOF],
  [
-@@ -156,19 +157,19 @@
+@@ -164,20 +157,6 @@
    ORIG_AC_CHECK_SIZEOF($1,$2)
  ])
  
@@ -25,40 +31,45 @@
 -    done
 -  fi
 -])
-+dnl define([ORIG_CHECK_HEADERS], defn([AC_CHECK_HEADERS]))
-+dnl pushdef([AC_CHECK_HEADERS],
-+dnl [
-+dnl   if test "x$enable_binary" != "xno"; then
-+dnl     ORIG_CHECK_HEADERS($1,$2,$3)
-+dnl   else
-+dnl     for ac_hdr in $1
-+dnl     do
-+dnl       ac_safe=`echo "$ac_hdr" | sed 'y%./+-%__p_%'`
-+dnl       eval "ac_cv_header_$ac_safe=yes"
-+dnl     done
-+dnl   fi
-+dnl ])
- 
+-
  AC_DEFUN(AC_MY_CHECK_TYPE,
  [
---- Pike-v7.4.20/src/configure.in.orig	Fri Apr 25 13:41:36 2003
-+++ Pike-v7.4.20/src/configure.in	Fri Apr 25 13:53:48 2003
-@@ -2980,9 +2980,6 @@
- ########################################################################
+ AC_MSG_CHECKING([for $1])
+@@ -301,8 +287,6 @@
  
- # NOTE: The following test is hardcoded to fail when crosscompiling
--# It also clobbers $LIBOBJS.
+ AC_DEFINE(POSIX_SOURCE)
+ 
+-AC_SUBST(CONFIG_HEADERS)
 -
+ AC_SUBST_FILE(dependencies)
+ dependencies=$srcdir/dependencies
+ 
+--- Pike-v7.4.44/src/configure.in.orig	2004-04-04 18:18:36.000000000 +0200
++++ Pike-v7.4.44/src/configure.in	2004-04-04 18:18:57.014351464 +0200
+@@ -1,6 +1,8 @@
+ AC_REVISION("$Id$")
+ AC_INIT(interpret.c)
+ AC_CONFIG_HEADER(machine.h)
++CONFIG_HEADERS="machine.h"
++AC_SUBST(CONFIG_HEADERS)
+ 
+ if_autoconf(2,50,[
+   if test "x$cache_file" = "x/dev/null"; then
+@@ -2988,7 +2988,7 @@
+ # NOTE: The following test is hardcoded to fail when crosscompiling
+ # It also clobbers $LIBOBJS.
+ 
 -OLD_LIBOBJS="${LIBOBJS}"
++OLD_LIB@&t@OBJS="${LIB@&t@OBJS}"
  
  AC_FUNC_MEMCMP
  
-@@ -2990,8 +2987,6 @@
+@@ -2996,7 +2996,7 @@
    AC_DEFINE(HAVE_MEMCMP)
  fi
  
 -LIBOBJS="${OLD_LIBOBJS}"
--
++LIB@&t@OBJS="${OLD_LIB@&t@OBJS}"
+ 
  ########################################################################
  
- AC_FUNC_MMAP
