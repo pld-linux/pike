@@ -6,14 +6,16 @@
 Summary:	Interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
-Version:	7.4.44
-Release:	4
+Version:	7.6.24
+Release:	0.1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://pike.ida.liu.se/download/pub/pike/latest-stable/Pike-v%{version}.tar.gz
-# Source0-md5:	e9fe50e56f3fada5de9b4a1dd3113fc6
-Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
-# Source1-md5:	0991ac8e4079cfa374e68c978bae9d59
+Source0:	http://pike.ida.liu.se/pub/pike/latest-stable/Pike-v%{version}.tar.gz
+# Source0-md5:	4e39c43a00c6566a9638ef48499bbc82
+Source1:	http://pike.ida.liu.se/generated/manual/pike_modref.tar.gz
+# Source1-md5:	fbe7595e28d7c220dd6f237efe7b7d68
+Source2:	http://pike.ida.liu.se/generated/manual/pike_ref.tar.gz
+# Source2-md5:	2ad4c65cd9475f92dfcba0bc13be0923
 Patch0:		%{name}-dirs.patch
 Patch1:		%{name}-Image-configure.patch
 Patch2:		%{name}-nolibs.patch
@@ -42,6 +44,7 @@ BuildRequires:	libglade-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	mysql-devel >= 3.20
+BuildRequires:	nettle-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pdflib-devel
 BuildRequires:	perl-base >= 5.6
@@ -276,15 +279,20 @@ Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do funkcji kompresji
 biblioteki zlib.
 
 %prep
-%setup -q -n Pike-v%{version} -a1
+%setup -q -n Pike-v%{version} -a1 -a2
 %patch0 -p1
-%patch1 -p1
+# huh?
+#%patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
+# not needed?
+#%patch3 -p1
+# seems not needed, there is autodetection now
+#%patch4 -p1
 %patch5 -p1
-%patch6 -p1
-%patch7 -p1
+#obsolete
+#%patch6 -p1
+# original source is different now than it was before this patch
+#%patch7 -p1
 
 %build
 # TODO
@@ -329,7 +337,9 @@ CPPFLAGS="-I/usr/include/postgresql/internal -I/usr/include/postgresql/server"
 	--without-gnome \
 	--with-sybase
 
-%{__make}
+%{__make} || :
+# remake forced by pike?
+%{__make} all doc
 
 %install
 rm -rf $RPM_BUILD_ROOT
