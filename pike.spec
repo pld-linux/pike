@@ -7,7 +7,9 @@ Release:	1
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://pike.ida.liu.se/pub/pike/latest-stable/Pike-v%{version}.tar.gz
+# Source0-md5:	b85a717c2f6064e8485c2116e746bbc0
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
+# Source1-md5:	0991ac8e4079cfa374e68c978bae9d59
 Patch0:		%{name}-dirs.patch
 Patch1:		%{name}-Image-configure.patch
 Patch2:		%{name}-nolibs.patch
