@@ -7,7 +7,7 @@ Summary:	Interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
 Version:	7.4.44
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Languages
 Source0:	ftp://pike.ida.liu.se/pub/pike/latest-stable/Pike-v%{version}.tar.gz
