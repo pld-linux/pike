@@ -9,11 +9,12 @@ Version:	7.2.239
 Release:	6
 License:	GPL
 Group:		Development/Tools
+# current stable: ftp://pike.ida.liu.se/pub/pike/latest-stable/ Pike-v7.4.20.tar.gz
 Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/%{name}-%{version}.tar.gz
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
 Patch0:		%{name}-dirs.patch
 Patch1:		%{name}-Image-configure.patch
-URL:		http://pike.idonex.se/
+URL:		http://pike.ida.liu.se/
 BuildRequires:	OpenGL-devel
 BuildRequires:	XFree86-devel
 BuildRequires:	bison
