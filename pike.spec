@@ -10,26 +10,26 @@ URL:		http://pike.idonex.se/
 Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/%{name}-%{version}.tar.gz
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
 Patch0:		%{name}-dirs.patch
-BuildRequires:	gdbm-devel
-BuildRequires:	gmp-devel
-BuildRequires:	zlib-devel
-BuildRequires:	pdflib-devel
-BuildRequires:	postgresql-devel >= 7.0
-BuildRequires:	mysql-devel >= 3.20
-BuildRequires:	unixODBC-devel
-BuildRequires:	freetype >= 2.0
-BuildRequires:	libjpeg-devel
-BuildRequires:	libtiff-devel
 BuildRequires:	XFree86-devel
-BuildRequires:	OpenGL-devel
-BuildRequires:	gtk+-devel
-BuildRequires:	glib-devel
-BuildRequires:	libglade-devel
-BuildRequires:	glut-devel
-BuildRequires:	perl >= 5.6
 BuildRequires:	bison
 BuildRequires:	file
 BuildRequires:	findutils
+BuildRequires:	freetype >= 2.0
+BuildRequires:	gdbm-devel
+BuildRequires:	glib-devel
+BuildRequires:	glut-devel
+BuildRequires:	gmp-devel
+BuildRequires:	gtk+-devel
+BuildRequires:	libglade-devel
+BuildRequires:	libjpeg-devel
+BuildRequires:	libtiff-devel
+BuildRequires:	mysql-devel >= 3.20
+BuildRequires:	OpenGL-devel
+BuildRequires:	pdflib-devel
+BuildRequires:	perl >= 5.6
+BuildRequires:	postgresql-devel >= 7.0
+BuildRequires:	unixODBC-devel
+BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreqdep	libGL.so.1 libGLU.so.1
@@ -245,8 +245,6 @@ cd src
 %{__make} install \
 	buildroot=$RPM_BUILD_ROOT
 
-gzip -9nf BUGS Change* README
-
 rm -f `find $RPM_BUILD_ROOT -regex '.*\.o' -type f | xargs`
 
 for f in `find $RPM_BUILD_ROOT%{_bindir} -type f` \
@@ -261,7 +259,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc src/*.gz tutorial
+%doc BUGS Change* README tutorial
 %attr(755,root,root) %{_bindir}/*
 %{_includedir}/pike
 
