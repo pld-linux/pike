@@ -70,7 +70,7 @@ Requires:	%{name} = %{version}
 %description pg
 This Pike module provides access to Postgres databases.
 
-%description -l pl pg
+%description pg -l pl
 Modu³ dla Pike umo¿liwiaj±cy dostêp do baz Postgresa.
 
 %package mysql
@@ -89,7 +89,7 @@ Requires:	%{name} = %{version}
 %description mysql
 This Pike module provides access to MySQL databases.
 
-%description -l pl mysql
+%description mysql -l pl
 Modu³ dla Pike umo¿liwiaj±cy dostêp do baz MySQL.
 
 %package images
@@ -109,7 +109,7 @@ Requires:	%{name} = %{version}
 This module provides many powerful image processing functions to Pike
 programs. Handles GIF, JPEG and PNM.
 
-%description -l pl images
+%description images -l pl
 Modu³ dla Pike dostarczaj±cy funkcje obróbki grafiki. Obs³uguje GIF,
 JPEG i PNM.
 
@@ -129,7 +129,7 @@ Requires:	%{name} = %{version}
 %description gdbm
 This Pike module provides access to gdbm databases.
 
-%description -l gdbm
+%description gdbm -l pl
 Modu³ dla Pike umo¿liwiaj±cy dostêp do baz gdbm.
 
 %package zlib
@@ -148,7 +148,7 @@ Requires:	%{name} = %{version}
 %description zlib
 This Pike module provides access to zlib compression functions.
 
-%description -l pl zlib
+%description zlib -l pl
 Modu³ dla Pike umo¿liwiaj±cy dostêp do funkcji kompresji biblioteki
 zlib.
 
@@ -168,7 +168,7 @@ Requires:	%{name} = %{version}
 %description gmp
 This Pike module provides access to gmp functions.
 
-%description -l pl gmp
+%description gmp -l pl
 Modu³ Pike umo¿liwiaj±cy dostêp do funkcji biblioteki gmp.
 
 %package perl
@@ -187,7 +187,7 @@ Requires:	%{name} = %{version}
 %description perl
 This Pike module makes it possible to use Perl code in Pike programs.
 
-%description -l pl perl
+%description perl -l pl
 Modu³ Pike umo¿liwiaj±cy u¿ywanie kodu Perla w programach Pike.
 
 %package GL
@@ -207,7 +207,7 @@ Requires:	OpenGL
 %description GL
 This Pike module provides access to OpenGL functions.
 
-%description -l pl GL
+%description GL -l pl
 Modu³ Pike umo¿liwiaj±cy dostêp do funkcji OpenGL.
 
 %package gtk
@@ -226,7 +226,7 @@ Requires:	%{name} = %{version}
 %description gtk
 This Pike module provides access to GTK+ functions.
 
-%description -l pl gtk
+%description gtk -l pl
 Modu³ Pike umo¿liwiaj±cy dostêp do funkcji GTK+.
 
 %package GLUT
@@ -245,7 +245,7 @@ Requires:	%{name} = %{version}
 %description GLUT
 This Pike module provides access to GLUT OpenGL functions.
 
-%description -l pl GLUT
+%description GLUT -l pl
 Modu³ Pike umo¿liwiaj±cy dostêp do funkcji OpenGL biblioteki GLUT.
 
 %package odbc
@@ -264,7 +264,7 @@ Requires:	%{name} = %{version}
 %description odbc
 This Pike module provides access to databases through ODBC driver.
 
-%description -l pl odbc
+%description odbc -l pl
 Modu³ Pike umo¿liwiaj±cy dostêp do baz danych poprzez sterownik ODBC.
 
 %package pdf
@@ -283,7 +283,7 @@ Requires:	%{name} = %{version}
 %description pdf
 This Pike module provides PDF processing functions.
 
-%description -l pdf
+%description pdf -l pl
 Modu³ Pike udostêpniaj±cy funkcje obróbki dokumentów PDF.
 
 %prep
@@ -337,7 +337,7 @@ gzip -9nf BUGS Change* README
 rm -f `find $RPM_BUILD_ROOT -regex '.*\.o' -type f | xargs`
 
 for f in `find $RPM_BUILD_ROOT%{_bindir} -type f` \
- 	 `find $RPM_BUILD_ROOT%{_libdir}/pike/modules -type f`; do
+	`find $RPM_BUILD_ROOT%{_libdir}/pike/modules -type f`; do
 	if (file $f | grep -q "script"); then
 		perl -pi -e 's@#\!.*pike@#\!%{_bindir}/pike@' $f;
 	fi
