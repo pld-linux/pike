@@ -1,22 +1,23 @@
-#
-# TODO: link with libnsl only when necessary (Yp.so?),
-#       don't link with libbind (if not necessary, which is probably true)
 %include	/usr/lib/rpm/macros.perl
-Summary:	interpreted, high-level, object oriented language
+Summary:	Interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
-Version:	7.2.239
-Release:	6
+Version:	7.4.20
+Release:	1
 License:	GPL
 Group:		Development/Tools
-# current stable: ftp://pike.ida.liu.se/pub/pike/latest-stable/ Pike-v7.4.20.tar.gz
-Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/%{name}-%{version}.tar.gz
+Source0:	ftp://pike.ida.liu.se/pub/pike/latest-stable/Pike-v%{version}.tar.gz
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
 Patch0:		%{name}-dirs.patch
 Patch1:		%{name}-Image-configure.patch
+Patch2:		%{name}-nolibs.patch
+Patch3:		%{name}-acfix.patch
 URL:		http://pike.ida.liu.se/
 BuildRequires:	OpenGL-devel
+BuildRequires:	SDL-devel
+BuildRequires:	SDL_mixer-devel
 BuildRequires:	XFree86-devel
+BuildRequires:	autoconf
 BuildRequires:	bison
 BuildRequires:	file
 BuildRequires:	findutils
@@ -25,6 +26,7 @@ BuildRequires:	gdbm-devel
 BuildRequires:	glib-devel
 BuildRequires:	glut-devel
 BuildRequires:	gmp-devel
+BuildRequires:	gtkglarea-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	libglade-devel
 BuildRequires:	libjpeg-devel
@@ -148,6 +150,18 @@ This Pike module provides access to OpenGL functions.
 %description GL -l pl
 Modu³ Pike umo¿liwiaj±cy dostêp do funkcji OpenGL.
 
+%package SDL
+Summary:	SDL pike module
+Summary(pl):	Modu³ pike - SDL
+Group:		Development/Libraries
+Requires:	%{name} = %{version}
+
+%description SDL
+This Pike module provides access to SDL functions.
+
+%description SDL -l pl
+Modu³ Pike umo¿liwiaj±cy dostêp do funkcji SDL.
+
 %package gtk
 Summary:	gtk pike module
 Summary(pl):	Modu³ pike - gtk
@@ -212,15 +226,28 @@ Ten modu³ Pike udostêpnia funkcje SANE.
 %setup -q -n Pike-v%{version} -a1
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 # TODO
 # fix ssl support (link with openssl; add ssl subpackage)
 # fix perl support
 cd src
+%{__autoconf}
+cd modules
+for m in system spider files sybase Msql Mysql Odbc ; do
+	cd $m
+	%{__autoconf} -I ../..
+	cd ..
+done
+cd ..
+# workaround - don't try to rebuild other configures
+# (or all Makefile.in files must be patched with s/--localdir/-I/)
+touch */configure */*/configure */*/*/configure
 LDFLAGS="-L/usr/X11R6/lib %{rpmldflags}"; export LDFLAGS
 CPPFLAGS="-I/usr/include/postgresql/internal -I/usr/include/postgresql/server"
-%configure2_13 \
+%configure \
 	--with-double-precision \
 	--with-long-double-precision \
 	--with-poll \
@@ -259,7 +286,9 @@ cd src
 rm -f `find $RPM_BUILD_ROOT -regex '.*\.o' -type f | xargs`
 
 for f in `find $RPM_BUILD_ROOT%{_bindir} -type f` \
-	`find $RPM_BUILD_ROOT%{_libdir}/pike/modules -type f`; do
+	`find $RPM_BUILD_ROOT%{_libdir}/pike/modules -type f` \
+	`find $RPM_BUILD_ROOT%{_libdir}/pike/7.2/modules -type f` \
+	`find $RPM_BUILD_ROOT%{_includedir}/pike -type f` ; do
 	if (file $f | grep -q "script"); then
 		perl -pi -e 's@#\!.*pike@#\!%{_bindir}/pike@' $f;
 	fi
@@ -270,7 +299,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ANNOUNCE README src/{BUGS,Change*} tutorial
+%doc ANNOUNCE README tutorial
 %attr(755,root,root) %{_bindir}/*
 %{_includedir}/pike
 
@@ -280,10 +309,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pike/include/[^mp]*.h
 %{_libdir}/pike/include/m[^y]*.h
 %{_libdir}/pike/include/p[^o]*.h
-%{_libdir}/pike/tools
 %dir %{_libdir}/pike/modules
 %{_libdir}/pike/modules/[^_]*.pmod
 %{_libdir}/pike/modules/_[^I]*.pmod
+%dir %{_libdir}/pike/modules/Crypto
+%{_libdir}/pike/modules/Crypto/*.p*
 %attr(755,root,root) %{_libdir}/pike/modules/C*.so
 %attr(755,root,root) %{_libdir}/pike/modules/*_C*.so
 %attr(755,root,root) %{_libdir}/pike/modules/Gettext*.so
@@ -294,10 +324,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/pike/modules/___O*.so
 %attr(755,root,root) %{_libdir}/pike/modules/P[ir]*.so
 %attr(755,root,root) %{_libdir}/pike/modules/___R*.so
-%attr(755,root,root) %{_libdir}/pike/modules/S[^A]*.so
+%attr(755,root,root) %{_libdir}/pike/modules/S[!AD]*.so
 %attr(755,root,root) %{_libdir}/pike/modules/s*.so
 %attr(755,root,root) %{_libdir}/pike/modules/___Y*.so
 %attr(755,root,root) %{_libdir}/pike/modules/Gmp.so
+%attr(755,root,root) %{_libdir}/pike/modules/Unicode.so
+%attr(755,root,root) %{_libdir}/pike/modules/DVB.so
+%attr(755,root,root) %{_libdir}/pike/modules/_Ffmpeg.so
+%attr(755,root,root) %{_libdir}/pike/modules/_Roxen.so
+
+%{_mandir}/man1/*
 
 %files pg
 %defattr(644,root,root,755)
@@ -319,7 +355,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files zlib
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/pike/modules/Gz.so
+%attr(755,root,root) %{_libdir}/pike/modules/*Gz*
 
 %files perl
 %defattr(644,root,root,755)
@@ -328,6 +364,10 @@ rm -rf $RPM_BUILD_ROOT
 %files GL
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/pike/modules/GL.so
+
+%files SDL
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/pike/modules/SDL.so
 
 %files gtk
 %defattr(644,root,root,755)
