@@ -2,18 +2,18 @@
 Summary:	Interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
-Version:	7.4.20
-Release:	1
+Version:	7.4.28
+Release:	0.1
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://pike.ida.liu.se/pub/pike/latest-stable/Pike-v%{version}.tar.gz
-# Source0-md5:	b85a717c2f6064e8485c2116e746bbc0
+# Source0-md5:	98a7944cea94c7255a24f2cba7d15ec1
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
 # Source1-md5:	0991ac8e4079cfa374e68c978bae9d59
 Patch0:		%{name}-dirs.patch
 Patch1:		%{name}-Image-configure.patch
 Patch2:		%{name}-nolibs.patch
-Patch3:		%{name}-acfix.patch
+#Patch3:		%{name}-acfix.patch
 URL:		http://pike.ida.liu.se/
 BuildRequires:	OpenGL-devel
 BuildRequires:	SDL-devel
@@ -229,7 +229,7 @@ Ten modu³ Pike udostêpnia funkcje SANE.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
+#%patch3 -p1
 
 %build
 # TODO
