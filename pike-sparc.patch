@@ -1,0 +1,11 @@
+--- Pike-v7.4.44/src/code/sparc.h.orig	2002-11-08 17:37:00.000000000 +0000
++++ Pike-v7.4.44/src/code/sparc.h	2004-04-15 21:15:42.000000000 +0000
+@@ -72,7 +72,7 @@
+ extern const unsigned INT32 sparc_flush_instruction_cache[];
+ #define FLUSH_INSTRUCTION_CACHE(ADDR, LEN)			\
+   (((void (*)(void *,size_t))sparc_flush_instruction_cache)	\
+-    (ADDR, (LEN)*sizeof(PIKE_OPCODE_T)))
++    (ADDR, (LEN)))
+ 
+ struct dynamic_buffer_s;
+ 
