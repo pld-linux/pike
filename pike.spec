@@ -29,7 +29,7 @@ BuildRequires:	libglade-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	mysql-devel >= 3.20
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	pdflib-devel
 BuildRequires:	perl >= 5.6
 BuildRequires:	postgresql-devel >= 7.2
