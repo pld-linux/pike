@@ -30,6 +30,7 @@ BuildRequires:	libglade-devel
 BuildRequires:	glut-devel
 BuildRequires:	perl >= 5.6
 BuildRequires:	bison
+BuildRequires:	file
 BuildRequires:	findutils
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -285,6 +286,13 @@ cd src
 gzip -9nf BUGS Change* README
 
 rm -f `find $RPM_BUILD_ROOT -regex '.*\.o' -type f | xargs`
+
+for f in `find $RPM_BUILD_ROOT%{_bindir} -type f` \
+ 	 `find $RPM_BUILD_ROOT%{_libdir}/pike/modules -type f`; do
+	if (file $f | grep -q "script"); then
+		perl -pi -e 's@#\!.*pike@#\!%{_bindir}/pike@' $f;
+	fi
+done;
 
 %clean
 rm -rf $RPM_BUILD_ROOT
