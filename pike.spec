@@ -12,6 +12,7 @@ Group:		Development/Tools
 Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/%{name}-%{version}.tar.gz
 Source1:	http://pike.roxen.com/documentation/tutorial.tar.gz
 Patch0:		%{name}-dirs.patch
+Patch1:		%{name}-Image-configure.patch
 URL:		http://pike.idonex.se/
 BuildRequires:	OpenGL-devel
 BuildRequires:	XFree86-devel
@@ -218,6 +219,7 @@ Ten modu³ Pike udostêpnia funkcje SANE.
 %prep
 %setup -q -n Pike-v%{version} -a1
 %patch0 -p1
+%patch1 -p1
 
 %build
 # TODO
