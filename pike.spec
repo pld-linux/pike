@@ -6,7 +6,7 @@ Summary:	interpreted, high-level, object oriented language
 Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
 Name:		pike
 Version:	7.2.239
-Release:	5
+Release:	6
 License:	GPL
 Group:		Development/Tools
 Source0:	ftp://ftp.roxen.com/pub/pike/latest-stable/%{name}-%{version}.tar.gz
@@ -37,6 +37,7 @@ BuildRequires:	postgresql-backend-devel >= 7.2
 BuildRequires:	sane-backends-devel
 BuildRequires:	unixODBC-devel
 BuildRequires:	zlib-devel
+Obsoletes:	pike-gmp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_noautoreqdep	libGL.so.1 libGLU.so.1
@@ -120,18 +121,6 @@ This Pike module provides access to zlib compression functions.
 %description zlib -l pl
 Modu³ dla Pike umo¿liwiaj±cy dostêp do funkcji kompresji biblioteki
 zlib.
-
-%package gmp
-Summary:	gmp pike module
-Summary(pl):	Modu³ pike - gmp
-Group:		Development/Libraries
-Requires:	%{name} = %{version}
-
-%description gmp
-This Pike module provides access to gmp functions.
-
-%description gmp -l pl
-Modu³ Pike umo¿liwiaj±cy dostêp do funkcji biblioteki gmp.
 
 %package perl
 Summary:	perl pike module
@@ -307,6 +296,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/pike/modules/S[^A]*.so
 %attr(755,root,root) %{_libdir}/pike/modules/s*.so
 %attr(755,root,root) %{_libdir}/pike/modules/___Y*.so
+%attr(755,root,root) %{_libdir}/pike/modules/Gmp.so
 
 %files pg
 %defattr(644,root,root,755)
@@ -329,10 +319,6 @@ rm -rf $RPM_BUILD_ROOT
 %files zlib
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/pike/modules/Gz.so
-
-%files gmp
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/pike/modules/Gmp.so
 
 %files perl
 %defattr(644,root,root,755)
