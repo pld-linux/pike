@@ -128,8 +128,8 @@ Modu³ dla Pike umo¿liwiaj±cy dostêp do funkcji kompresji biblioteki
 zlib.
 
 %package perl
-Summary:	perl pike module
-Summary(pl):	Modu³ pike - perl
+Summary:	Perl pike module
+Summary(pl):	Modu³ pike do Perla
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
