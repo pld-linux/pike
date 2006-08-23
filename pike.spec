@@ -26,9 +26,9 @@ Patch6:		%{name}-ffmpeg.patch
 Patch7:		%{name}-sparc.patch
 URL:		http://pike.ida.liu.se/
 %{?with_GL:BuildRequires:	OpenGL-devel}
+%{?with_GL:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	SDL-devel
 BuildRequires:	SDL_mixer-devel
-BuildRequires:	XFree86-devel
 BuildRequires:	autoconf
 BuildRequires:	bison
 BuildRequires:	file
@@ -36,7 +36,6 @@ BuildRequires:	freetds-devel
 BuildRequires:	freetype-devel >= 2.1.0
 BuildRequires:	gdbm-devel
 BuildRequires:	glib-devel
-%{?with_GL:BuildRequires:	glut-devel}
 BuildRequires:	gmp-devel
 BuildRequires:	gtkglarea1-devel
 BuildRequires:	gtk+-devel
@@ -47,11 +46,12 @@ BuildRequires:	mysql-devel >= 3.20
 BuildRequires:	nettle-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pdflib-devel
-BuildRequires:	perl-base >= 5.6
+BuildRequires:	perl-base >= 1:5.6
 BuildRequires:	postgresql-devel >= 7.2
 BuildRequires:	postgresql-backend-devel >= 7.2
 BuildRequires:	sane-backends-devel
 BuildRequires:	unixODBC-devel
+BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	zlib-devel
 Obsoletes:	pike-gmp
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -309,44 +309,42 @@ cd ..
 # workaround - don't try to rebuild other configures
 # (or all Makefile.in files must be patched with s/--localdir/-I/)
 touch */configure */*/configure */*/*/configure
-LDFLAGS="-L/usr/X11R6/%{_lib} %{rpmldflags}"; export LDFLAGS
 CPPFLAGS="-I/usr/include/postgresql/internal -I/usr/include/postgresql/server"
 %configure \
 	--with-double-precision \
-	--with-long-double-precision \
-	--with-poll \
-	--with-max-fd=1024 \
-	--with-security \
-	--with-gmp \
-	--with-zlib \
-	--with-pdflib \
-	--with-postgres \
-	--with-postgres-include-dir=%{_includedir}/postgresql \
-	--with-mysql \
-	--with-ssleay \
 	--with-freetype \
 	--with-gif \
+	--with-gmp \
 	--with-jpeglib \
+	--with-long-double-precision \
+	--with-max-fd=1024 \
+	--with-mysql \
+	--with-pdflib \
+	--with-poll \
+	--with-postgres \
+	--with-postgres-include-dir=%{_includedir}/postgresql \
+	--with-sane \
+	--with-security \
+	--with-sybase \
+	--with-ssleay \
 	--with-tifflib \
 	--with-ttflib \
 	--with-x \
+	--with-zlib \
 	%{?with_GL:--with-lib-GL} \
 	%{?with_GL:--with-GLUT} \
-	--with-sane \
 	--without-perl \
-	--without-gnome \
-	--with-sybase
+	--without-gnome
 
-%{__make} || :
+#%{__make} || :
 # remake forced by pike?
 %{__make} all doc
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_libdir}
-cd src
 
-%{__make} install \
+%{__make} -C src install \
 	buildroot=$RPM_BUILD_ROOT
 
 rm -f `find $RPM_BUILD_ROOT -regex '.*\.o' -type f | xargs`
