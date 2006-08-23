@@ -94,18 +94,17 @@ diff -urN Pike-v7.6.24.org/src/modules/spider/configure.in Pike-v7.6.24/src/modu
  
  AC_HAVE_HEADERS(arpa/inet.h netinet/in.h sys/mman.h netdb.h \
          sys/socket.h sys/sockio.h sys/conf.h stropts.h \
-diff -urN Pike-v7.6.24.org/src/modules/sybase/configure.in Pike-v7.6.24/src/modules/sybase/configure.in
---- Pike-v7.6.24.org/src/modules/sybase/configure.in	2003-05-03 19:48:22.000000000 +0200
-+++ Pike-v7.6.24/src/modules/sybase/configure.in	2005-02-19 18:05:33.510612408 +0100
-@@ -117,7 +117,7 @@
+--- Pike-v7.6.86/src/modules/sybase/configure.in.orig	2005-03-22 10:10:55.000000000 +0100
++++ Pike-v7.6.86/src/modules/sybase/configure.in	2006-08-23 08:22:25.023429250 +0200
+@@ -145,7 +145,7 @@
  
-     AC_CHECK_LIB(m,floor)
-     AC_CHECK_LIB(dl,dlopen)
--    AC_CHECK_LIB(nsl,gethostbyname)
-+    AC_SEARCH_LIBS(gethostbyname, nsl)
+   AC_CHECK_LIB(m,floor)
+   AC_CHECK_LIB(dl,dlopen)
+-  AC_CHECK_LIB(nsl,gethostbyname)
++  AC_SEARCH_LIBS(gethostbyname,nsl)
  
-     AC_SEARCH_LIBS(intl_datetime,
- 		   intl_r64 intl_r intl64 intl,
+   if test x$pike_cv_framework_sybaseopenclient = "xyes"; then
+     AC_DEFINE(HAVE_SYBASE)
 diff -urN Pike-v7.6.24.org/src/modules/system/configure.in Pike-v7.6.24/src/modules/system/configure.in
 --- Pike-v7.6.24.org/src/modules/system/configure.in	2003-12-07 23:49:12.000000000 +0100
 +++ Pike-v7.6.24/src/modules/system/configure.in	2005-02-19 18:04:41.050587544 +0100
