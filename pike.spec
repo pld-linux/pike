@@ -22,8 +22,7 @@ Patch2:		%{name}-nolibs.patch
 Patch3:		%{name}-acfix.patch
 Patch4:		%{name}-freetype-includes.patch
 Patch5:		%{name}-ssl.patch
-Patch6:		%{name}-ffmpeg.patch
-Patch7:		%{name}-sparc.patch
+Patch6:		%{name}-sparc.patch
 URL:		http://pike.ida.liu.se/
 %{?with_GL:BuildRequires:	OpenGL-devel}
 %{?with_GL:BuildRequires:	OpenGL-glut-devel}
@@ -281,18 +280,14 @@ biblioteki zlib.
 %prep
 %setup -q -n Pike-v%{version} -a1 -a2
 %patch0 -p1
-# huh?
-#%patch1 -p1
+%patch1 -p1
 %patch2 -p1
 # not needed?
 #%patch3 -p1
-# seems not needed, there is autodetection now
-#%patch4 -p1
+%patch4 -p1
 %patch5 -p1
-#obsolete
+# issue fixed (s/\*/+/)? needs check if pike works on sparc now
 #%patch6 -p1
-# original source is different now than it was before this patch
-#%patch7 -p1
 
 %build
 # TODO
