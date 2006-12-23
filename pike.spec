@@ -295,7 +295,7 @@ biblioteki zlib.
 cd src
 %{__autoconf}
 cd modules
-for m in system spider files sybase Msql Mysql Odbc Ssleay _Image_FreeType ; do
+for m in system spider files sybase Image Msql Mysql Odbc Ssleay _Image_FreeType ; do
 	cd $m
 	%{__autoconf} -I ../..
 	cd ..
