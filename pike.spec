@@ -10,7 +10,7 @@ Version:	7.6.86
 Release:	0.1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://pike.ida.liu.se/pub/pike/latest-stable/Pike-v%{version}.tar.gz
+Source0:	http://pike.ida.liu.se/download/pub/pike/latest-stable/Pike-v%{version}.tar.gz
 # Source0-md5:	bdd3f6cafed8d299b22f79b10b14ab78
 Source1:	http://pike.ida.liu.se/generated/manual/pike_modref.tar.gz
 # Source1-md5:	fbe7595e28d7c220dd6f237efe7b7d68
