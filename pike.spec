@@ -4,7 +4,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	Interpreted, high-level, object oriented language
-Summary(pl):	Interpretowalny, obiektowy jêzyk wysokiego poziomu
+Summary(pl.UTF-8):   Interpretowalny, obiektowy jÄ™zyk wysokiego poziomu
 Name:		pike
 Version:	7.6.86
 Release:	0.1
@@ -68,15 +68,15 @@ been designed. The changes to Pike that have been made have been
 guided by its users' needs. In general, the better you get to know
 Pike, the more you will appreciate it, from a users perspective.
 
-%description -l pl
+%description -l pl.UTF-8
 Pike jest interpretowalnym, modularnym, obiektowo zorientowanym
-jêzykiem wysokiego poziomu. Pike ze sk³adni± podobn± do C jest prosty
-w nauce. Pike raczej ewoluowa³ ni¿ by³ zaprojektowany. Zmiany w Pike
-zosta³y zapocz±tkowane z powodu konkretnych potrzeb u¿ytkowników.
+jÄ™zykiem wysokiego poziomu. Pike ze skÅ‚adniÄ… podobnÄ… do C jest prosty
+w nauce. Pike raczej ewoluowaÅ‚ niÅ¼ byÅ‚ zaprojektowany. Zmiany w Pike
+zostaÅ‚y zapoczÄ…tkowane z powodu konkretnych potrzeb uÅ¼ytkownikÃ³w.
 
 %package GL
 Summary:	GL module for Pike
-Summary(pl):	Modu³ GL dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ GL dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL
@@ -84,37 +84,37 @@ Requires:	OpenGL
 %description GL
 This Pike module provides access to OpenGL functions.
 
-%description GL -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do funkcji OpenGL.
+%description GL -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do funkcji OpenGL.
 
 %package GLUT
 Summary:	GLUT module for Pike
-Summary(pl):	Modu³ GLUT dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ GLUT dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name}-GL = %{version}-%{release}
 
 %description GLUT
 This Pike module provides access to GLUT OpenGL functions.
 
-%description GLUT -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do funkcji OpenGL
+%description GLUT -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do funkcji OpenGL
 biblioteki GLUT.
 
 %package SDL
 Summary:	SDL module for Pike
-Summary(pl):	Modu³ SDL dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ SDL dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description SDL
 This Pike module provides access to SDL functions.
 
-%description SDL -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do funkcji biblioteki SDL.
+%description SDL -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do funkcji biblioteki SDL.
 
 %package ffmpeg
 Summary:	Ffmpeg module for Pike
-Summary(pl):	Modu³ Ffmpeg dla jêzyka pike
+Summary(pl.UTF-8):   ModuÅ‚ Ffmpeg dla jÄ™zyka pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -122,37 +122,37 @@ Requires:	%{name} = %{version}-%{release}
 This Pike module provides access to ffmpeg libraries functions
 (libavcodec, libavformat).
 
-%description ffmpeg -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do funkcji bibliotek ffmpeg
+%description ffmpeg -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do funkcji bibliotek ffmpeg
 (libavcodec, libavformat).
 
 %package gdbm
 Summary:	Gdbm module pike module
-Summary(pl):	Modu³ obs³ugi baz danych Gdbm dla jêzyka pike
+Summary(pl.UTF-8):   ModuÅ‚ obsÅ‚ugi baz danych Gdbm dla jÄ™zyka pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description gdbm
 This Pike module provides access to GDBM databases.
 
-%description gdbm -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do baz GDBM.
+%description gdbm -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do baz GDBM.
 
 %package gtk
 Summary:	GTK+ pike module
-Summary(pl):	Modu³ GTK+ dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ GTK+ dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description gtk
 This Pike module provides access to GTK+ functions.
 
-%description gtk -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do funkcji GTK+.
+%description gtk -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do funkcji GTK+.
 
 %package images
 Summary:	Image-related modules for Pike
-Summary(pl):	Modu³y obs³ugi grafiki dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚y obsÅ‚ugi grafiki dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -160,121 +160,121 @@ Requires:	%{name} = %{version}-%{release}
 This module provides many powerful image processing functions to Pike
 programs. Handles GIF, JPEG and PNM.
 
-%description images -l pl
-Modu³ dla jêzyka Pike dostarczaj±cy funkcje obróbki grafiki. Obs³uguje
+%description images -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike dostarczajÄ…cy funkcje obrÃ³bki grafiki. ObsÅ‚uguje
 GIF, JPEG i PNM.
 
 %package mysql
 Summary:	MySQL module for Pike
-Summary(pl):	Modu³ MySQL dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ MySQL dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description mysql
 This Pike module provides access to MySQL databases.
 
-%description mysql -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do baz danych MySQL.
+%description mysql -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do baz danych MySQL.
 
 %package odbc
 Summary:	ODBC module for Pike
-Summary(pl):	Modu³ ODBC dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ ODBC dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description odbc
 This Pike module provides access to databases through ODBC driver.
 
-%description odbc -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do baz danych poprzez
+%description odbc -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do baz danych poprzez
 sterownik ODBC.
 
 %package pdf
 Summary:	PDF module for Pike
-Summary(pl):	Modu³ PDF dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ PDF dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description pdf
 This Pike module provides PDF processing functions.
 
-%description pdf -l pl
-Modu³ dla jêzyka Pike udostêpniaj±cy funkcje obróbki dokumentów PDF.
+%description pdf -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike udostÄ™pniajÄ…cy funkcje obrÃ³bki dokumentÃ³w PDF.
 
 %package perl
 Summary:	Perl module for Pike
-Summary(pl):	Modu³ Perl dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ Perl dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description perl
 This Pike module makes it possible to use Perl code in Pike programs.
 
-%description perl -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy u¿ywanie kodu Perla w programach
+%description perl -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy uÅ¼ywanie kodu Perla w programach
 napisanych w Pike'u.
 
 %package pg
 Summary:	Postgres module for Pike
-Summary(pl):	Modu³ Postgres dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ Postgres dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description pg
 This Pike module provides access to PostgreSQL databases.
 
-%description pg -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do baz danych PostgreSQL.
+%description pg -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do baz danych PostgreSQL.
 
 %package sane
 Summary:	SANE module for Pike
-Summary(pl):	Modu³ SANE dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ SANE dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description sane
 This Pike module provides SANE (scanner access) functions.
 
-%description sane -l pl
-Modu³ dla jêzyka Pike udostêpniaj±cy funkcje SANE (s³u¿±ce do dostêpu
+%description sane -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike udostÄ™pniajÄ…cy funkcje SANE (sÅ‚uÅ¼Ä…ce do dostÄ™pu
 do skanera).
 
 %package ssl
 Summary:	Ssleay module for Pike
-Summary(pl):	Modu³ Ssleay dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ Ssleay dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description ssl
 This Pike module provides OpenSSL functions.
 
-%description ssl -l pl
-Modu³ dla jêzyka Pike udostêpniaj±cy funkcje biblioteki OpenSSL.
+%description ssl -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike udostÄ™pniajÄ…cy funkcje biblioteki OpenSSL.
 
 %package sybase
 Summary:	Sybase module for Pike
-Summary(pl):	Modu³ Sybase dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ Sybase dla jÄ™zyka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description sybase
 This Pike module provides access to Sybase or MS SQL databases.
 
-%description sybase -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do baz danych Sybase i MS
+%description sybase -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do baz danych Sybase i MS
 SQL.
 
 %package zlib
 Summary:	Gz module for Pike
-Summary(pl):	Modu³ Gz dla jêzyka Pike
+Summary(pl.UTF-8):   ModuÅ‚ Gz dla jÄ™zyka Pike
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description zlib
 This Pike module provides access to zlib compression functions.
 
-%description zlib -l pl
-Modu³ dla jêzyka Pike umo¿liwiaj±cy dostêp do funkcji kompresji
+%description zlib -l pl.UTF-8
+ModuÅ‚ dla jÄ™zyka Pike umoÅ¼liwiajÄ…cy dostÄ™p do funkcji kompresji
 biblioteki zlib.
 
 %prep
