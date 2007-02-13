@@ -4,7 +4,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	Interpreted, high-level, object oriented language
-Summary(pl.UTF-8):   Interpretowalny, obiektowy język wysokiego poziomu
+Summary(pl.UTF-8):	Interpretowalny, obiektowy język wysokiego poziomu
 Name:		pike
 Version:	7.6.86
 Release:	0.1
@@ -76,7 +76,7 @@ zostały zapoczątkowane z powodu konkretnych potrzeb użytkowników.
 
 %package GL
 Summary:	GL module for Pike
-Summary(pl.UTF-8):   Moduł GL dla języka Pike
+Summary(pl.UTF-8):	Moduł GL dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	OpenGL
@@ -89,7 +89,7 @@ Moduł dla języka Pike umożliwiający dostęp do funkcji OpenGL.
 
 %package GLUT
 Summary:	GLUT module for Pike
-Summary(pl.UTF-8):   Moduł GLUT dla języka Pike
+Summary(pl.UTF-8):	Moduł GLUT dla języka Pike
 Group:		Libraries
 Requires:	%{name}-GL = %{version}-%{release}
 
@@ -102,7 +102,7 @@ biblioteki GLUT.
 
 %package SDL
 Summary:	SDL module for Pike
-Summary(pl.UTF-8):   Moduł SDL dla języka Pike
+Summary(pl.UTF-8):	Moduł SDL dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -114,7 +114,7 @@ Moduł dla języka Pike umożliwiający dostęp do funkcji biblioteki SDL.
 
 %package ffmpeg
 Summary:	Ffmpeg module for Pike
-Summary(pl.UTF-8):   Moduł Ffmpeg dla języka pike
+Summary(pl.UTF-8):	Moduł Ffmpeg dla języka pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -128,7 +128,7 @@ Moduł dla języka Pike umożliwiający dostęp do funkcji bibliotek ffmpeg
 
 %package gdbm
 Summary:	Gdbm module pike module
-Summary(pl.UTF-8):   Moduł obsługi baz danych Gdbm dla języka pike
+Summary(pl.UTF-8):	Moduł obsługi baz danych Gdbm dla języka pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -140,7 +140,7 @@ Moduł dla języka Pike umożliwiający dostęp do baz GDBM.
 
 %package gtk
 Summary:	GTK+ pike module
-Summary(pl.UTF-8):   Moduł GTK+ dla języka Pike
+Summary(pl.UTF-8):	Moduł GTK+ dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -152,7 +152,7 @@ Moduł dla języka Pike umożliwiający dostęp do funkcji GTK+.
 
 %package images
 Summary:	Image-related modules for Pike
-Summary(pl.UTF-8):   Moduły obsługi grafiki dla języka Pike
+Summary(pl.UTF-8):	Moduły obsługi grafiki dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -166,7 +166,7 @@ GIF, JPEG i PNM.
 
 %package mysql
 Summary:	MySQL module for Pike
-Summary(pl.UTF-8):   Moduł MySQL dla języka Pike
+Summary(pl.UTF-8):	Moduł MySQL dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -178,7 +178,7 @@ Moduł dla języka Pike umożliwiający dostęp do baz danych MySQL.
 
 %package odbc
 Summary:	ODBC module for Pike
-Summary(pl.UTF-8):   Moduł ODBC dla języka Pike
+Summary(pl.UTF-8):	Moduł ODBC dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -191,7 +191,7 @@ sterownik ODBC.
 
 %package pdf
 Summary:	PDF module for Pike
-Summary(pl.UTF-8):   Moduł PDF dla języka Pike
+Summary(pl.UTF-8):	Moduł PDF dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -203,7 +203,7 @@ Moduł dla języka Pike udostępniający funkcje obróbki dokumentów PDF.
 
 %package perl
 Summary:	Perl module for Pike
-Summary(pl.UTF-8):   Moduł Perl dla języka Pike
+Summary(pl.UTF-8):	Moduł Perl dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -216,7 +216,7 @@ napisanych w Pike'u.
 
 %package pg
 Summary:	Postgres module for Pike
-Summary(pl.UTF-8):   Moduł Postgres dla języka Pike
+Summary(pl.UTF-8):	Moduł Postgres dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -228,7 +228,7 @@ Moduł dla języka Pike umożliwiający dostęp do baz danych PostgreSQL.
 
 %package sane
 Summary:	SANE module for Pike
-Summary(pl.UTF-8):   Moduł SANE dla języka Pike
+Summary(pl.UTF-8):	Moduł SANE dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -241,7 +241,7 @@ do skanera).
 
 %package ssl
 Summary:	Ssleay module for Pike
-Summary(pl.UTF-8):   Moduł Ssleay dla języka Pike
+Summary(pl.UTF-8):	Moduł Ssleay dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -253,7 +253,7 @@ Moduł dla języka Pike udostępniający funkcje biblioteki OpenSSL.
 
 %package sybase
 Summary:	Sybase module for Pike
-Summary(pl.UTF-8):   Moduł Sybase dla języka Pike
+Summary(pl.UTF-8):	Moduł Sybase dla języka Pike
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -266,7 +266,7 @@ SQL.
 
 %package zlib
 Summary:	Gz module for Pike
-Summary(pl.UTF-8):   Moduł Gz dla języka Pike
+Summary(pl.UTF-8):	Moduł Gz dla języka Pike
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
