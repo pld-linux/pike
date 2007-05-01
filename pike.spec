@@ -2,6 +2,9 @@
 # Conditional build:
 %bcond_without	GL	# don't build GL and GLUT modules
 #
+# TODO:
+# - dvb (not ready for version 3 API in Linux 2.6.x)
+# - PDF.Panda?
 %include	/usr/lib/rpm/macros.perl
 Summary:	Interpreted, high-level, object oriented language
 Summary(pl.UTF-8):	Interpretowalny, obiektowy język wysokiego poziomu
@@ -23,7 +26,9 @@ Patch2:		%{name}-acfix.patch
 Patch3:		%{name}-freetype-includes.patch
 Patch4:		%{name}-ssl.patch
 Patch5:		%{name}-sparc.patch
+Patch6:		%{name}-pkgconfig.patch
 URL:		http://pike.ida.liu.se/
+BuildRequires:	Mird-devel
 %{?with_GL:BuildRequires:	OpenGL-devel}
 %{?with_GL:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	SDL-devel
@@ -40,12 +45,14 @@ BuildRequires:	gtkglarea1-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	libglade-devel
 BuildRequires:	libjpeg-devel
+BuildRequires:	librsvg-devel >= 2.0
 BuildRequires:	libtiff-devel
 BuildRequires:	mysql-devel >= 3.20
 BuildRequires:	nettle-devel
 BuildRequires:	openssl-devel >= 0.9.7d
 BuildRequires:	pdflib-devel
 BuildRequires:	perl-base >= 1:5.6
+BuildRequires:	pkgconfig
 BuildRequires:	postgresql-devel >= 7.2
 BuildRequires:	postgresql-backend-devel >= 7.2
 BuildRequires:	sane-backends-devel
@@ -287,6 +294,7 @@ biblioteki zlib.
 %patch4 -p1
 # issue fixed (s/\*/+/)? needs check if pike works on sparc now
 #%patch5 -p1
+%patch6 -p1
 
 %build
 # TODO
@@ -300,12 +308,17 @@ for m in system spider files sybase Msql Mysql Odbc Ssleay _Image_FreeType ; do
 	%{__autoconf} -I ../..
 	cd ..
 done
-cd ..
+cd ../post_modules/_Image_SVG
+%{__autoconf} -I ../..
+cd ../..
 # workaround - don't try to rebuild other configures
 # (or all Makefile.in files must be patched with s/--localdir/-I/)
 touch */configure */*/configure */*/*/configure
 CPPFLAGS="-I/usr/include/postgresql/internal -I/usr/include/postgresql/server"
 %configure \
+	GTK_CONFIG=/usr/bin/gtk-config \
+	LIBGLADE_CONFIG=/usr/bin/libglade-config \
+	SDL_CONFIG=/usr/bin/sdl-config \
 	--with-double-precision \
 	--with-freetype \
 	--with-gif \
