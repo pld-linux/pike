@@ -6,23 +6,23 @@
 Summary:	Interpreted, high-level, object oriented language
 Summary(pl.UTF-8):	Interpretowalny, obiektowy język wysokiego poziomu
 Name:		pike
-Version:	7.6.86
+Version:	7.6.112
 Release:	0.1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://pike.ida.liu.se/download/pub/pike/latest-stable/Pike-v%{version}.tar.gz
-# Source0-md5:	bdd3f6cafed8d299b22f79b10b14ab78
+#Source0Download: http://pike.ida.liu.se/download/pub/pike/latest-stable/
+Source0:	http://pike.ida.liu.se/pub/pike/latest-stable/Pike-v%{version}.tar.gz
+# Source0-md5:	3ba03096741d6df839d32a940f4a865c
 Source1:	http://pike.ida.liu.se/generated/manual/pike_modref.tar.gz
 # Source1-md5:	fbe7595e28d7c220dd6f237efe7b7d68
 Source2:	http://pike.ida.liu.se/generated/manual/pike_ref.tar.gz
 # Source2-md5:	2ad4c65cd9475f92dfcba0bc13be0923
 Patch0:		%{name}-dirs.patch
-Patch1:		%{name}-Image-configure.patch
-Patch2:		%{name}-nolibs.patch
-Patch3:		%{name}-acfix.patch
-Patch4:		%{name}-freetype-includes.patch
-Patch5:		%{name}-ssl.patch
-Patch6:		%{name}-sparc.patch
+Patch1:		%{name}-nolibs.patch
+Patch2:		%{name}-acfix.patch
+Patch3:		%{name}-freetype-includes.patch
+Patch4:		%{name}-ssl.patch
+Patch5:		%{name}-sparc.patch
 URL:		http://pike.ida.liu.se/
 %{?with_GL:BuildRequires:	OpenGL-devel}
 %{?with_GL:BuildRequires:	OpenGL-glut-devel}
@@ -281,21 +281,21 @@ biblioteki zlib.
 %setup -q -n Pike-v%{version} -a1 -a2
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 # not needed?
-#%patch3 -p1
+#%patch2 -p1
+%patch3 -p1
 %patch4 -p1
-%patch5 -p1
 # issue fixed (s/\*/+/)? needs check if pike works on sparc now
-#%patch6 -p1
+#%patch5 -p1
 
 %build
 # TODO
 # fix perl support
 cd src
 %{__autoconf}
+touch stamp-h.in
 cd modules
-for m in system spider files sybase Image Msql Mysql Odbc Ssleay _Image_FreeType ; do
+for m in system spider files sybase Msql Mysql Odbc Ssleay _Image_FreeType ; do
 	cd $m
 	%{__autoconf} -I ../..
 	cd ..
