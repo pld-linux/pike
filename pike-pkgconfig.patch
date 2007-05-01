@@ -1,0 +1,17 @@
+--- Pike-v7.6.112/src/post_modules/_Image_SVG/configure.in.orig	2003-12-17 23:04:50.000000000 +0100
++++ Pike-v7.6.112/src/post_modules/_Image_SVG/configure.in	2007-05-01 21:49:23.520140306 +0200
+@@ -16,10 +16,10 @@
+ if test x$with_svg = xyes ; then
+   PIKE_FEATURE_NODEP(Image.SVG)
+ 
+-  MY_AC_PATH_PROG(PKG_CONFIG, ${ac_tool_prefix}pkg-config, no)
+-  if ${ac_tool_prefix}pkg-config librsvg-2.0 2>/dev/null ; then
+-    SVG_CFLAGS="`${ac_tool_prefix}pkg-config librsvg-2.0 --cflags`"
+-    SVG_LIBS="`${ac_tool_prefix}pkg-config librsvg-2.0 --libs`"
++  MY_AC_PATH_PROG(PKG_CONFIG, pkg-config, no)
++  if ${PKG_CONFIG} librsvg-2.0 2>/dev/null ; then
++    SVG_CFLAGS="`${PKG_CONFIG} librsvg-2.0 --cflags`"
++    SVG_LIBS="`${PKG_CONFIG} librsvg-2.0 --libs`"
+     AC_MSG_CHECKING(if librsvg actually works)
+ 
+     OLDCPPFLAGS="$CPPFLAGS"
