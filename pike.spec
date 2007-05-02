@@ -3,7 +3,7 @@
 %bcond_without	GL	# don't build GL and GLUT modules
 #
 # TODO:
-# - dvb (not ready for version 3 API in Linux 2.6.x)
+# - update DVB (not ready for version 3 API in Linux 2.6.x)
 # - PDF.Panda?
 %include	/usr/lib/rpm/macros.perl
 Summary:	Interpreted, high-level, object oriented language
@@ -11,7 +11,7 @@ Summary(pl.UTF-8):	Interpretowalny, obiektowy język wysokiego poziomu
 Name:		pike
 Version:	7.6.112
 Release:	0.1
-License:	GPL
+License:	GPL v2, LGPL v2.1, MPL 1.1
 Group:		Development/Languages
 #Source0Download: http://pike.ida.liu.se/download/pub/pike/latest-stable/
 Source0:	http://pike.ida.liu.se/pub/pike/latest-stable/Pike-v%{version}.tar.gz
@@ -43,6 +43,7 @@ BuildRequires:	glib-devel
 BuildRequires:	gmp-devel
 BuildRequires:	gtkglarea1-devel
 BuildRequires:	gtk+-devel
+BuildRequires:	krb5-devel
 BuildRequires:	libglade-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	librsvg-devel >= 2.0
@@ -340,13 +341,12 @@ CPPFLAGS="-I/usr/include/postgresql/internal -I/usr/include/postgresql/server"
 	--with-x \
 	--with-zlib \
 	%{?with_GL:--with-lib-GL} \
-	%{?with_GL:--with-GLUT} \
+	%{!?with_GL:--without-GL --without-GLUT} \
 	--without-perl \
 	--without-gnome
 
-#%{__make} || :
-# remake forced by pike?
-%{__make} all doc
+%{__make}
+# "doc" fails
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -371,7 +371,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ANNOUNCE README tutorial
+%doc ANNOUNCE CHANGES COMMITTERS COPYRIGHT README
+# tutorial
 %attr(755,root,root) %{_bindir}/*
 %{_includedir}/pike
 
@@ -379,7 +380,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pike/*.*
 %dir %{_libdir}/pike/include
 %{_libdir}/pike/include/[!mop]*.h
-%{_libdir}/pike/include/m[!y]*.h
 %{_libdir}/pike/include/p[!o]*.h
 %dir %{_libdir}/pike/modules
 %{_libdir}/pike/modules/[!_P]*.pmod
@@ -388,27 +388,38 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/pike/modules/Parser.pmod/_parser.so
 %{_libdir}/pike/modules/P[!a]*.pmod
 %{_libdir}/pike/modules/_[!I]*.pmod
-%dir %{_libdir}/pike/modules/Crypto
-%{_libdir}/pike/modules/Crypto/*.p*
+# R: bzip2-libs
+%attr(755,root,root) %{_libdir}/pike/modules/Bz2.so
+# dummy
+%attr(755,root,root) %{_libdir}/pike/modules/COM.so
 %attr(755,root,root) %{_libdir}/pike/modules/CommonLog.so
+# currently dummy
 %attr(755,root,root) %{_libdir}/pike/modules/DVB.so
 %attr(755,root,root) %{_libdir}/pike/modules/Gettext.so
+# R: gmp
 %attr(755,root,root) %{_libdir}/pike/modules/Gmp.so
-%attr(755,root,root) %{_libdir}/pike/modules/HTTPLoop.so
+%attr(755,root,root) %{_libdir}/pike/modules/HTTPAccept.so
+# R: krb5-libs
+%attr(755,root,root) %{_libdir}/pike/modules/Kerberos.so
+# dummy
 %attr(755,root,root) %{_libdir}/pike/modules/Msql.so
+# R: nettle
+%attr(755,root,root) %{_libdir}/pike/modules/Nettle.so
 %attr(755,root,root) %{_libdir}/pike/modules/Pipe.so
 %attr(755,root,root) %{_libdir}/pike/modules/Shuffler.so
 %attr(755,root,root) %{_libdir}/pike/modules/Unicode.so
-%attr(755,root,root) %{_libdir}/pike/modules/_Crypto.so
+%attr(755,root,root) %{_libdir}/pike/modules/_ADT.so
 %attr(755,root,root) %{_libdir}/pike/modules/_Roxen.so
 %attr(755,root,root) %{_libdir}/pike/modules/___Java.so
 %attr(755,root,root) %{_libdir}/pike/modules/___MIME.so
 %attr(755,root,root) %{_libdir}/pike/modules/___Math.so
+# R: Mird
 %attr(755,root,root) %{_libdir}/pike/modules/___Mird.so
 %attr(755,root,root) %{_libdir}/pike/modules/___Oracle.so
 %attr(755,root,root) %{_libdir}/pike/modules/___Regexp.so
 %attr(755,root,root) %{_libdir}/pike/modules/___Yp.so
 %attr(755,root,root) %{_libdir}/pike/modules/____Charset.so
+%attr(755,root,root) %{_libdir}/pike/modules/____Regexp_PCRE.so
 %attr(755,root,root) %{_libdir}/pike/modules/spider.so
 
 %{_mandir}/man1/*
@@ -449,7 +460,6 @@ rm -rf $RPM_BUILD_ROOT
 %files mysql
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/pike/modules/Mysql.so
-%{_libdir}/pike/include/mysql.h
 
 %files odbc
 %defattr(644,root,root,755)
@@ -466,7 +476,6 @@ rm -rf $RPM_BUILD_ROOT
 %files pg
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/pike/modules/Postgres.so
-%{_libdir}/pike/include/postgres.h
 
 %files sane
 %defattr(644,root,root,755)
