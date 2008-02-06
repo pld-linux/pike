@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	GL	# don't build GL and GLUT modules
+%bcond_without	opengl	# don't build GL and GLUT modules
 #
 # TODO:
 # - update DVB (not ready for version 3 API in Linux 2.6.x)
@@ -29,8 +29,8 @@ Patch5:		%{name}-sparc.patch
 Patch6:		%{name}-pkgconfig.patch
 URL:		http://pike.ida.liu.se/
 BuildRequires:	Mird-devel
-%{?with_GL:BuildRequires:	OpenGL-devel}
-%{?with_GL:BuildRequires:	OpenGL-glut-devel}
+%{?with_opengl:BuildRequires:	OpenGL-devel}
+%{?with_opengl:BuildRequires:	OpenGL-glut-devel}
 BuildRequires:	SDL-devel
 BuildRequires:	SDL_mixer-devel
 BuildRequires:	autoconf
@@ -340,8 +340,8 @@ CPPFLAGS="-I/usr/include/postgresql/internal -I/usr/include/postgresql/server"
 	--with-ttflib \
 	--with-x \
 	--with-zlib \
-	%{?with_GL:--with-lib-GL} \
-	%{!?with_GL:--without-GL --without-GLUT} \
+	%{?with_opengl:--with-lib-GL} \
+	%{!?with_opengl:--without-GL --without-GLUT} \
 	--without-perl \
 	--without-gnome
 
@@ -424,7 +424,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_mandir}/man1/*
 
-%if %{with GL}
+%if %{with opengl}
 %files GL
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/pike/modules/GL.so
