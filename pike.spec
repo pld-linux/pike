@@ -43,7 +43,7 @@ BuildRequires:	glib-devel
 BuildRequires:	gmp-devel
 BuildRequires:	gtkglarea1-devel
 BuildRequires:	gtk+-devel
-BuildRequires:	krb5-devel
+BuildRequires:	heimdal-devel
 BuildRequires:	libglade-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	librsvg-devel >= 2.0
