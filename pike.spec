@@ -5,7 +5,6 @@
 # TODO:
 # - update DVB (not ready for version 3 API in Linux 2.6.x)
 # - PDF.Panda?
-%include	/usr/lib/rpm/macros.perl
 Summary:	Interpreted, high-level, object oriented language
 Summary(pl.UTF-8):	Interpretowalny, obiektowy język wysokiego poziomu
 Name:		pike
